@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Contact AEC</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Contact Allied Engineering Company, Ahmedabad. Send your drawings and 3D models (STEP, IGES, DFT, PDF and more) for a machining quote.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,7 +100,9 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance}
 .maplink span{transition:transform .3s var(--ease)}
 
 /* Form */
-.formbox{padding:clamp(24px,3.4vw,44px)}
+.formbox{padding:clamp(20px,3.4vw,44px);min-width:0}
+.side{min-width:0}
+input[type="date"]{-webkit-appearance:none;appearance:none;min-height:50px}
 .formbox h2{font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.015em}
 .formbox .sub{color:var(--muted);margin:10px 0 28px}
 form{display:grid;gap:18px}
@@ -110,14 +111,15 @@ form{display:grid;gap:18px}
 .f{display:grid;gap:7px;min-width:0}
 .f label,.lbl{font-size:13.5px;font-weight:600;color:var(--fg)}
 .f label i,.lbl i{font-style:normal;color:var(--accent)}
-.f input,.f select,.f textarea{width:100%;font:15.5px/1.4 var(--font);color:var(--fg);background:var(--card);border:1.5px solid transparent;border-radius:10px;padding:14px 15px;transition:border-color .2s,background .2s,box-shadow .2s}
+.f input,.f select,.f textarea{width:100%;min-width:0;max-width:100%;font:15.5px/1.4 var(--font);color:var(--fg);background:var(--card);border:1.5px solid transparent;border-radius:10px;padding:14px 15px;transition:border-color .2s,background .2s,box-shadow .2s}
 .f input:hover,.f select:hover,.f textarea:hover{background:#f1f1f1}
 .f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--fg);background:#fff;box-shadow:0 0 0 4px rgba(29,29,29,.06)}
 .f textarea{min-height:120px;resize:vertical}
 .f.bad input,.f.bad textarea{border-color:var(--err);background:#fff7f7}
 .f .err{font-size:12.5px;color:var(--err);min-height:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips{position:relative}
+.chips input{position:absolute;left:0;top:0;width:1px!important;height:1px;min-width:0;padding:0;margin:0;opacity:0;pointer-events:none}
 .chips label{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1.5px solid var(--line);font:500 14px/1 var(--font);cursor:pointer;transition:all .25s var(--ease)}
 .chips label::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid #b5b5b5;transition:all .25s}
 .chips input:checked+label{background:var(--fg);color:#fff;border-color:var(--fg)}
@@ -213,7 +215,7 @@ footer{background:#fff;padding-block:44px 28px;font-size:15px;color:var(--muted)
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}}
 
 @media (max-width:980px){
-  .cols{grid-template-columns:1fr}
+  .cols{grid-template-columns:minmax(0,1fr)}
   .side{order:2}
   .steps{grid-template-columns:1fr}
 }
@@ -225,7 +227,7 @@ footer{background:#fff;padding-block:44px 28px;font-size:15px;color:var(--muted)
   .burger{display:grid;place-items:center}
 }
 @media (max-width:600px){
-  .row,.row3{grid-template-columns:1fr}
+  .row,.row3{grid-template-columns:minmax(0,1fr)}
   .submit .pill{width:100%}
   .wa-btn{width:56px;height:56px}.wa-tip{display:none}
   .logo small{font-size:9px}
