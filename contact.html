@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact AEC</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Contact Allied Engineering Company, Ahmedabad. Send your drawings and 3D models (STEP, IGES, DFT, PDF and more) for a machining quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: short dark photo hero, then contact details beside a large inquiry form with drag-and-drop file upload, then a three-step "what happens next". Single light theme matching the rest of the site. */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --band:#f2f2f2; --card:#f7f7f7; --fg:#1d1d1d; --muted:#555b63; --line:#e1e1e1;
+  --accent:#d7141c; --accent-soft:#fde8e9; --dark:#0d0d0d; --ok:#14804a; --ok-soft:#e6f4ec; --err:#c0151c;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --display:"Montserrat","Inter",system-ui,sans-serif;
+  --wrap:1280px; --r:14px; --ease:cubic-bezier(.22,.7,.12,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+[hidden]{display:none!important}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 34px;border-radius:999px;font:600 15px/1 var(--font);border:0;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s,opacity .3s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
+.pill-accent{background:var(--accent);color:#fff}
+.pill-dark{background:var(--dark);color:#fff}
+.pill-ghost{background:#fff;color:var(--fg);border:1.5px solid var(--line)}
+
+/* Header */
+.hdr{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .3s,box-shadow .3s}
+.hdr.solid{background:#fff;box-shadow:0 1px 0 #e5e5e5}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:80px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font:800 italic 30px/1 var(--display);color:var(--accent);letter-spacing:.02em}
+.logo b::after{content:"";display:block;height:3px;width:70%;background:var(--accent);margin-top:3px;border-radius:2px}
+.logo small{font:600 10.5px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.nav{display:flex;gap:36px;align-items:center}
+.nav a{font-size:16px;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
+.nav a[aria-current="page"]{font-weight:600}
+.burger{display:none;position:relative;width:48px;height:48px;padding:0;border:1px solid #d6d6d6;border-radius:50%;background:#fff;color:#1d1d1d;cursor:pointer;flex:none;transition:background .25s,border-color .25s}
+.burger span{position:absolute;left:50%;top:50%;width:20px;height:2px;margin-left:-10px;border-radius:2px;background:#1d1d1d;transition:transform .35s cubic-bezier(.22,.7,.12,1),opacity .2s}
+.burger span:nth-child(1){transform:translateY(-7px)}
+.burger span:nth-child(3){transform:translateY(7px)}
+.burger[aria-expanded="true"]{background:#1d1d1d;border-color:#1d1d1d}
+.burger[aria-expanded="true"] span{background:#fff}
+.burger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:#111;color:#fff;padding-top:calc(80px + env(safe-area-inset-top,0px))}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 14s ease-out both}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.3) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(64px,8vw,110px) clamp(110px,11vw,150px)}
+.crumb{font:500 13px/1 var(--font);color:rgba(255,255,255,.7);margin-bottom:24px}
+.crumb a:hover{color:#fff}
+.hero h1{font-size:clamp(42px,5.6vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.025em;margin-top:18px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln span{display:inline-block;animation:lineUp 1.1s var(--ease) both}
+.hero h1 .ln:nth-child(2) span{animation-delay:.12s}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:560px;margin-top:22px;color:rgba(255,255,255,.85);font-size:clamp(16px,1.3vw,19px);animation:up 1s .35s var(--ease) both}
+
+/* Main grid */
+.main{position:relative;z-index:3;margin-top:clamp(-90px,-7vw,-60px);padding-bottom:clamp(72px,8vw,110px)}
+.cols{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:24px;align-items:start}
+.side{display:grid;gap:16px}
+.box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.box h3{font-size:13px;font-family:var(--font);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a9097;margin-bottom:14px}
+.phone{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.phone:first-of-type{border-top:0;padding-top:0}
+.phone b{display:block;font:700 22px/1.2 var(--display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.phone small{color:var(--muted);font-size:13.5px}
+.copy{flex:none;font:600 12px/1 var(--font);padding:9px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:all .25s}
+.copy:hover{border-color:var(--fg)}
+.wa-box{background:#0f2a1c;color:#fff;border:0;display:grid;gap:14px;position:relative;overflow:hidden}
+.wa-box::after{content:"";position:absolute;right:-50px;bottom:-50px;width:170px;height:170px;border-radius:50%;background:rgba(37,211,102,.18)}
+.wa-box h3{color:#7fe3a6}
+.wa-box p{color:rgba(255,255,255,.82);font-size:15px;position:relative;z-index:1}
+.wa-link{display:inline-flex;align-items:center;gap:10px;align-self:start;background:#25d366;color:#05230f;font:700 15px/1 var(--font);padding:14px 22px;border-radius:999px;position:relative;z-index:1;transition:transform .3s var(--ease)}
+.wa-link:hover{transform:translateY(-2px)}
+.wa-link svg{width:20px;height:20px;fill:currentColor}
+.addr p{font-size:15.5px;line-height:1.6}
+.addr .muted{color:var(--muted);font-size:14px;margin-top:10px}
+.maplink{display:inline-flex;gap:8px;align-items:center;margin-top:14px;font-weight:600;color:var(--accent)}
+.maplink:hover span{transform:translateX(4px)}
+.maplink span{transition:transform .3s var(--ease)}
+
+/* Form */
+.formbox{padding:clamp(24px,3.4vw,44px)}
+.formbox h2{font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.015em}
+.formbox .sub{color:var(--muted);margin:10px 0 28px}
+form{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.f{display:grid;gap:7px;min-width:0}
+.f label,.lbl{font-size:13.5px;font-weight:600;color:var(--fg)}
+.f label i,.lbl i{font-style:normal;color:var(--accent)}
+.f input,.f select,.f textarea{width:100%;font:15.5px/1.4 var(--font);color:var(--fg);background:var(--card);border:1.5px solid transparent;border-radius:10px;padding:14px 15px;transition:border-color .2s,background .2s,box-shadow .2s}
+.f input:hover,.f select:hover,.f textarea:hover{background:#f1f1f1}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--fg);background:#fff;box-shadow:0 0 0 4px rgba(29,29,29,.06)}
+.f textarea{min-height:120px;resize:vertical}
+.f.bad input,.f.bad textarea{border-color:var(--err);background:#fff7f7}
+.f .err{font-size:12.5px;color:var(--err);min-height:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1.5px solid var(--line);font:500 14px/1 var(--font);cursor:pointer;transition:all .25s var(--ease)}
+.chips label::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid #b5b5b5;transition:all .25s}
+.chips input:checked+label{background:var(--fg);color:#fff;border-color:var(--fg)}
+.chips input:checked+label::before{background:var(--accent);border-color:var(--accent)}
+.chips input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Upload */
+.drop{position:relative;border:2px dashed #cfcfcf;border-radius:14px;padding:30px 20px;text-align:center;background:var(--card);transition:border-color .25s,background .25s,transform .25s var(--ease);cursor:pointer}
+.drop:hover{border-color:#9a9a9a}
+.drop.over{border-color:var(--accent);background:var(--accent-soft);transform:scale(1.01)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.drop .ico{width:56px;height:56px;margin:0 auto 14px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.08);transition:transform .4s var(--ease)}
+.drop.over .ico{transform:translateY(-6px) rotate(-6deg)}
+.drop .ico svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.drop b{display:block;font:700 16.5px/1.3 var(--display)}
+.drop b u{color:var(--accent);text-underline-offset:3px}
+.drop small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.types{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px}
+.types span{font:600 11px/1 var(--font);letter-spacing:.06em;padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--line);color:var(--muted)}
+.files{display:grid;gap:8px}
+.file{display:grid;grid-template-columns:46px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;animation:pop .45s var(--ease) both}
+.file .ext{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;font:800 11px/1 var(--display);letter-spacing:.02em;color:#fff;background:#1d1d1d}
+.file .ext.cad{background:var(--accent)}
+.file .ext.doc{background:#3a3f45}
+.file .nm{min-width:0}
+.file .nm b{display:block;font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file .nm small{color:var(--muted);font-size:12.5px}
+.file .rm{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px;line-height:1;transition:all .2s}
+.file .rm:hover{background:var(--fg);color:#fff;border-color:var(--fg)}
+.file.bad{border-color:var(--err);background:#fff7f7}
+.file.bad small{color:var(--err)}
+.meter{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--muted)}
+.meter span{flex:1;height:5px;border-radius:5px;background:var(--band);overflow:hidden}
+.meter span i{display:block;height:100%;width:0;background:var(--fg);border-radius:5px;transition:width .5s var(--ease),background .3s}
+.meter.full span i{background:var(--err)}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted);cursor:pointer}
+.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.submit{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px}
+.submit .pill{min-width:220px}
+.submit small{color:var(--muted);font-size:13px}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:spin .8s linear infinite}
+.prog{height:4px;border-radius:4px;background:var(--band);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.msg{border-radius:12px;padding:16px 18px;font-size:15px}
+.msg.warn{background:#fff6e5;color:#6b4a00;border:1px solid #f3dca8}
+.msg.err{background:#fff2f2;color:var(--err);border:1px solid #f4c4c6}
+.done{text-align:center;padding:30px 10px;display:grid;justify-items:center;gap:14px;animation:pop .6s var(--ease) both}
+.done .tick{width:84px;height:84px;border-radius:50%;background:var(--ok-soft);display:grid;place-items:center}
+.done .tick svg{width:44px;height:44px;stroke:var(--ok);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .8s .2s var(--ease) forwards}
+.done h3{font-size:28px}
+.done p{color:var(--muted);max-width:44ch}
+.done .ref{font:700 15px/1 var(--display);letter-spacing:.06em;padding:10px 16px;border-radius:999px;background:var(--band)}
+
+/* Next steps */
+.next{background:var(--band);padding-block:clamp(72px,8vw,110px)}
+.next h2{font-size:clamp(30px,3.6vw,50px);font-weight:700;text-transform:uppercase;letter-spacing:-.015em;line-height:1.08;margin:16px 0 44px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{background:#fff;border-radius:var(--r);padding:30px;position:relative;overflow:hidden}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font:800 54px/1 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--accent);margin-bottom:18px}
+.step h3{font-size:21px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:15px}
+.step::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent);transition:width 1s var(--ease)}
+.step.revealed::after,.step:hover::after{width:100%}
+
+footer{background:#fff;padding-block:44px 28px;font-size:15px;color:var(--muted);border-top:1px solid var(--line)}
+.ftop{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:28px;border-bottom:1px solid #e4e4e4}
+.ftop nav{display:flex;flex-wrap:wrap;gap:26px}
+.ftop nav a:hover{color:var(--fg)}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:14px}
+
+/* WhatsApp float */
+.wa{position:fixed;z-index:70;right:calc(24px + env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;animation:waIn .8s 1s var(--ease) both}
+.wa-btn{position:relative;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.45);transition:transform .35s var(--ease)}
+.wa-btn::before,.wa-btn::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:waRing 2.4s ease-out infinite}
+.wa-btn::after{animation-delay:1.2s}
+.wa-btn svg{width:32px;height:32px;fill:#fff}
+.wa:hover .wa-btn{transform:scale(1.08) rotate(-8deg)}
+.wa-tip{background:#fff;color:var(--fg);font:600 14px/1 var(--font);padding:12px 16px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.14);opacity:0;transform:translateX(10px);transition:opacity .3s,transform .35s var(--ease);white-space:nowrap}
+.wa:hover .wa-tip{opacity:1;transform:none}
+
+.pending{opacity:0;transform:translateY(32px)}
+.revealed{transition:opacity 1s var(--ease),transform 1s var(--ease)}
+
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1.02)}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes lineUp{from{transform:translateY(110%)}to{transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes waIn{from{opacity:0;transform:translateY(30px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes waRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+
+@media (max-width:980px){
+  .cols{grid-template-columns:1fr}
+  .side{order:2}
+  .steps{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav{position:absolute;top:80px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;padding:8px max(24px,env(safe-area-inset-right,0px)) 20px max(24px,env(safe-area-inset-left,0px));box-shadow:0 20px 30px rgba(0,0,0,.08);display:none}
+  .nav.open{display:flex}
+  .nav a{padding:16px 0;border-bottom:1px solid #eee}
+  .nav a::after{display:none}
+  .burger{display:grid;place-items:center}
+}
+@media (max-width:600px){
+  .row,.row3{grid-template-columns:1fr}
+  .submit .pill{width:100%}
+  .wa-btn{width:56px;height:56px}.wa-tip{display:none}
+  .logo small{font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Allied Engineering Company home"><b>AEC</b><small>Allied Engineering Company</small></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="machinery.html">Machinery</a>
+      <a href="index.html#quality">Quality</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <img src="images/hd/hero-4.jpg" alt="Large generator rotor in a heavy engineering workshop" style="object-position:65% 50%">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / Contact</div>
+    <span class="eyebrow" style="color:#ff5a60">Request a quote</span>
+    <h1><span class="ln"><span>Send us your</span></span><span class="ln"><span><em>drawing.</em></span></span></h1>
+    <p>Share your 2D drawings or 3D models, the material and the quantity. Our team reviews every inquiry and usually replies within one working day.</p>
+  </div>
+</section>
+
+<section class="main">
+  <div class="wrap cols">
+    <aside class="side">
+      <div class="box" data-reveal>
+        <h3>Call us</h3>
+        <div class="phone"><div><b>+91 99798 55347</b><small>Mr. Chi Chi Panchal, Sales &amp; Admin</small></div><button class="copy" data-copy="+91 99798 55347">Copy</button></div>
+        <div class="phone"><div><b>+91 79 2282 1208</b><small>Office telefax</small></div><button class="copy" data-copy="+91 79 2282 1208">Copy</button></div>
+      </div>
+      <div class="box wa-box" data-reveal>
+        <h3>Prefer WhatsApp?</h3>
+        <p>Send photos, drawings or a quick question straight to our sales team.</p>
+        <a class="wa-link" href="https://wa.me/919979855347?text=Hello%20AEC%2C%20I%20would%20like%20a%20quote%20for%20a%20machined%20part." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.01 3C8.83 3 3 8.81 3 15.97c0 2.29.6 4.52 1.75 6.49L3 29l6.73-1.76a13.03 13.03 0 0 0 6.28 1.6h.01C23.18 28.84 29 23.03 29 15.87 29 12.4 27.65 9.15 25.2 6.7A12.92 12.92 0 0 0 16.01 3Zm5.93 15.58c-.32-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.32-.84 1.06-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.5 5.56 4.91.78.34 1.38.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.62-.38Z"/></svg>Chat on WhatsApp</a>
+      </div>
+      <div class="box addr" data-reveal>
+        <h3>Registered office &amp; Unit 1</h3>
+        <p>Plot No. 1893, Near Bajrang Ashram,<br>N.H. No. 8, Saijpur Bogha,<br>Ahmedabad 382350, Gujarat, India</p>
+        <p class="muted">Proprietor: Mr. G. H. Panchal</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Allied+Engineering+Company+Saijpur+Bogha+Ahmedabad" target="_blank" rel="noopener">Open in Google Maps <span>→</span></a>
+      </div>
+    </aside>
+
+    <div class="box formbox" data-reveal>
+      <div id="formWrap">
+        <h2>Request a quote</h2>
+        <p class="sub">Fields marked <span style="color:var(--accent)">*</span> are required. Attach as many drawings and models as you need.</p>
+        <form id="inq" action="send-inquiry.php" method="post" enctype="multipart/form-data" novalidate>
+          <div class="row">
+            <div class="f"><label for="f-name">Full name <i>*</i></label><input id="f-name" name="name" autocomplete="name" required><span class="err"></span></div>
+            <div class="f"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization"></div>
+          </div>
+          <div class="row">
+            <div class="f"><label for="f-ph">Phone <i>*</i></label><input id="f-ph" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91" required><span class="err"></span></div>
+            <div class="f"><label for="f-em">Email <i>*</i></label><input id="f-em" name="email" type="email" autocomplete="email" required><span class="err"></span></div>
+          </div>
+          <div class="f">
+            <span class="lbl">What do you need?</span>
+            <div class="chips" role="group" aria-label="Requirement">
+              <input type="checkbox" id="r1" name="need[]" value="Machined components" checked><label for="r1">Machined components</label>
+              <input type="checkbox" id="r2" name="need[]" value="Casting machining"><label for="r2">Casting machining</label>
+              <input type="checkbox" id="r3" name="need[]" value="Forging machining"><label for="r3">Forging machining</label>
+              <input type="checkbox" id="r4" name="need[]" value="Fabrication and machining"><label for="r4">Fabrication and machining</label>
+              <input type="checkbox" id="r5" name="need[]" value="Job work"><label for="r5">Job work</label>
+            </div>
+          </div>
+          <div class="row3">
+            <div class="f"><label for="f-mat">Material</label><input id="f-mat" name="material" placeholder="e.g. EN8, SS304, CI"></div>
+            <div class="f"><label for="f-qty">Quantity</label><input id="f-qty" name="quantity" inputmode="numeric" placeholder="e.g. 50 nos"></div>
+            <div class="f"><label for="f-date">Required by</label><input id="f-date" name="required_by" type="date"></div>
+          </div>
+          <div class="f"><label for="f-msg">Part details</label><textarea id="f-msg" name="message" placeholder="Size, tolerances, finish, heat treatment or anything else we should know"></textarea></div>
+
+          <div class="f">
+            <span class="lbl">Drawings &amp; 3D models</span>
+            <div class="drop" id="drop">
+              <input type="file" id="f-files" name="files[]" multiple accept=".stp,.step,.igs,.iges,.dft,.pdf,.dwg,.dxf,.sldprt,.sldasm,.slddrw,.x_t,.x_b,.stl,.prt,.asm,.catpart,.catproduct,.ipt,.iam,.par,.psm,.3dm,.sat,.jt,.obj,.zip,.rar,.7z,.jpg,.jpeg,.png" aria-label="Choose drawing and model files">
+              <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
+              <b>Drag files here or <u>browse</u></b>
+              <small>Up to 10 files, 25 MB in total</small>
+              <div class="types"><span>STEP</span><span>IGES</span><span>DFT</span><span>PDF</span><span>DWG</span><span>DXF</span><span>SLDPRT</span><span>X_T</span><span>STL</span><span>PRT</span><span>CATPART</span><span>IPT</span><span>ZIP</span><span>JPG</span></div>
+            </div>
+            <div class="files" id="files"></div>
+            <div class="meter" id="meter" hidden><span><i id="meterBar"></i></span><em id="meterTxt"></em></div>
+          </div>
+
+          <label class="check"><input type="checkbox" name="confidential" value="yes" checked> Treat my drawings as confidential. They are used only to prepare this quote.</label>
+          <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="ref" id="f-ref">
+
+          <div class="prog" id="prog" hidden><i id="progBar"></i></div>
+          <div class="msg" id="msg" hidden></div>
+          <div class="submit">
+            <button class="pill pill-accent" type="submit" id="send"><span id="sendTxt">Send inquiry</span> <span class="arr">→</span></button>
+            <small>Bigger files? Send them on WhatsApp after you submit.</small>
+          </div>
+        </form>
+      </div>
+      <div class="done" id="done" hidden>
+        <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>Inquiry received</h3>
+        <p id="doneTxt">Thank you. Our team will review your drawings and get back to you, usually within one working day.</p>
+        <span class="ref" id="doneRef"></span>
+        <a class="pill pill-ghost" href="contact.html">Send another inquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="wrap">
+    <span class="eyebrow">What happens next</span>
+    <h2>From inquiry to quote</h2>
+    <div class="steps">
+      <div class="step" data-reveal><h3>We review your drawing</h3><p>An engineer studies the part, tolerances, material and quantity, and picks the right machine for it.</p></div>
+      <div class="step" data-reveal><h3>We call you</h3><p>If anything is unclear we call to confirm details, so the quote matches what you actually need.</p></div>
+      <div class="step" data-reveal><h3>You get a quote</h3><p>A clear price and delivery time, usually within one working day for standard parts.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <a class="logo" href="index.html"><b>AEC</b><small>Allied Engineering Company</small></a>
+      <nav><a href="index.html#about">About</a><a href="index.html#capabilities">Capabilities</a><a href="machinery.html">Machinery</a><a href="index.html#quality">Quality</a><a href="index.html#clients">Clients</a><a href="contact.html">Contact</a></nav>
+    </div>
+    <div class="fbot"><span>© 2026 Allied Engineering Company. All rights reserved.</span><span>Saijpur Bogha, Ahmedabad, Gujarat</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/919979855347?text=Hello%20AEC%2C%20I%20would%20like%20a%20quote%20for%20a%20machined%20part." target="_blank" rel="noopener" aria-label="Chat with AEC on WhatsApp">
+  <span class="wa-tip">Chat on WhatsApp</span>
+  <span class="wa-btn"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.01 3C8.83 3 3 8.81 3 15.97c0 2.29.6 4.52 1.75 6.49L3 29l6.73-1.76a13.03 13.03 0 0 0 6.28 1.6h.01C23.18 28.84 29 23.03 29 15.87 29 12.4 27.65 9.15 25.2 6.7A12.92 12.92 0 0 0 16.01 3Zm0 23.66h-.01a10.8 10.8 0 0 1-5.5-1.5l-.4-.24-4 1.04 1.07-3.89-.26-.4a10.7 10.7 0 0 1-1.65-5.7c0-5.95 4.85-10.79 10.81-10.79 2.89 0 5.6 1.12 7.64 3.16a10.7 10.7 0 0 1 3.16 7.63c0 5.95-4.85 10.69-10.86 10.69Zm5.93-8.08c-.32-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.32-.84 1.06-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.5 5.56 4.91.78.34 1.38.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.62-.38Z"/></svg></span>
+</a>
+
+<script>
+(function(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const MAX_FILES = 10, MAX_TOTAL = 25 * 1024 * 1024;
+  const CAD = ["stp","step","igs","iges","dft","sldprt","sldasm","slddrw","x_t","x_b","stl","prt","asm","catpart","catproduct","ipt","iam","par","psm","3dm","sat","jt","obj","dwg","dxf"];
+  const OK = CAD.concat(["pdf","zip","rar","7z","jpg","jpeg","png"]);
+  const ext = n => (n.split(".").pop() || "").toLowerCase();
+  const size = b => b < 1048576 ? Math.max(1, Math.round(b / 1024)) + " KB" : (b / 1048576).toFixed(1) + " MB";
+
+  /* Files */
+  let picked = [];
+  const input = document.getElementById("f-files"), drop = document.getElementById("drop"), list = document.getElementById("files");
+  const meter = document.getElementById("meter"), meterBar = document.getElementById("meterBar"), meterTxt = document.getElementById("meterTxt");
+  function add(fs){
+    for (const f of fs) {
+      if (picked.length >= MAX_FILES) { show("warn", "You can attach up to " + MAX_FILES + " files. Send the rest on WhatsApp after you submit."); break; }
+      if (picked.some(p => p.name === f.name && p.size === f.size)) continue;
+      picked.push(f);
+    }
+    draw();
+  }
+  function draw(){
+    const total = picked.reduce((a,f) => a + f.size, 0);
+    list.innerHTML = picked.map((f,i) => {
+      const e = ext(f.name), bad = !OK.includes(e);
+      const cls = CAD.includes(e) ? "cad" : (e === "pdf" ? "doc" : "");
+      return '<div class="file' + (bad ? " bad" : "") + '"><span class="ext ' + cls + '">' + (e.slice(0,6).toUpperCase() || "FILE") + '</span><div class="nm"><b title="' + f.name.replace(/"/g, "&quot;") + '">' + f.name.replace(/</g, "&lt;") + '</b><small>' + (bad ? "This file type is not accepted" : size(f.size)) + '</small></div><button type="button" class="rm" data-i="' + i + '" aria-label="Remove ' + f.name.replace(/"/g, "&quot;") + '">×</button></div>';
+    }).join("");
+    meter.hidden = !picked.length;
+    meterBar.style.width = Math.min(100, total / MAX_TOTAL * 100) + "%";
+    meter.classList.toggle("full", total > MAX_TOTAL);
+    meterTxt.textContent = size(total) + " of 25 MB";
+  }
+  list.addEventListener("click", e => { const b = e.target.closest(".rm"); if (b) { picked.splice(+b.dataset.i, 1); draw(); } });
+  input.addEventListener("change", () => { add(input.files); input.value = ""; });
+  ["dragenter","dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave","drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", e => { if (e.dataTransfer && e.dataTransfer.files) add(e.dataTransfer.files); });
+  document.addEventListener("dragover", e => e.preventDefault());
+  document.addEventListener("drop", e => e.preventDefault());
+
+  /* Validation */
+  const form = document.getElementById("inq"), msg = document.getElementById("msg");
+  function show(type, text){ msg.hidden = false; msg.className = "msg " + type; msg.textContent = text; }
+  function fieldErr(id, text){ const f = document.getElementById(id).closest(".f"); f.classList.toggle("bad", !!text); f.querySelector(".err").textContent = text || ""; return !text; }
+  function validate(){
+    let ok = true;
+    ok = fieldErr("f-name", form.name.value.trim() ? "" : "Please enter your name.") && ok;
+    const ph = form.phone.value.replace(/[^\d+]/g, "");
+    ok = fieldErr("f-ph", ph.replace(/\D/g, "").length >= 10 ? "" : "Please enter a phone number with at least 10 digits.") && ok;
+    ok = fieldErr("f-em", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()) ? "" : "Please enter a valid email address.") && ok;
+    return ok;
+  }
+  ["f-name","f-ph","f-em"].forEach(id => document.getElementById(id).addEventListener("blur", () => { if (document.getElementById(id).value) validate(); }));
+
+  /* Submit */
+  const send = document.getElementById("send"), sendTxt = document.getElementById("sendTxt"), prog = document.getElementById("prog"), progBar = document.getElementById("progBar");
+  form.addEventListener("submit", e => {
+    e.preventDefault(); msg.hidden = true;
+    if (!validate()) { show("err", "Please fix the highlighted fields."); form.querySelector(".bad input").focus(); return; }
+    if (picked.some(f => !OK.includes(ext(f.name)))) { show("err", "Remove the files marked in red. Those file types are not accepted."); return; }
+    if (picked.reduce((a,f) => a + f.size, 0) > MAX_TOTAL) { show("err", "Your files are over 25 MB in total. Remove some here and send them on WhatsApp after you submit."); return; }
+    const d = new Date(), ref = "AEC-" + String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
+    document.getElementById("f-ref").value = ref;
+    const data = new FormData(form); data.delete("files[]"); picked.forEach(f => data.append("files[]", f, f.name));
+    send.disabled = true; sendTxt.innerHTML = '<span class="spin"></span>'; sendTxt.insertAdjacentText("beforeend", " Sending"); prog.hidden = false; progBar.style.width = "0";
+    const x = new XMLHttpRequest();
+    x.open("POST", form.getAttribute("action"));
+    x.upload.onprogress = ev => { if (ev.lengthComputable) progBar.style.width = (ev.loaded / ev.total * 100) + "%"; };
+    const fail = (text) => { send.disabled = false; sendTxt.textContent = "Send inquiry"; prog.hidden = true; show("warn", text); };
+    x.onload = () => {
+      let r = null; try { r = JSON.parse(x.responseText); } catch (err) {}
+      if (x.status === 200 && r && r.ok) {
+        document.getElementById("formWrap").hidden = true;
+        document.getElementById("doneRef").textContent = "Reference " + ref;
+        document.getElementById("done").hidden = false;
+        document.getElementById("done").scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+      } else if (r && r.error) { fail(r.error); }
+      else { fail("This preview cannot send inquiries yet. Once the site is live this form delivers your details and files to AEC. For now please call +91 99798 55347 or use WhatsApp."); }
+    };
+    x.onerror = () => fail("We could not send your inquiry. Please check your connection and try again, or call +91 99798 55347.");
+    x.send(data);
+  });
+
+  /* Copy buttons */
+  document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+    const v = b.dataset.copy;
+    const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(v).then(done, () => { b.textContent = v; }); else b.textContent = v;
+  }));
+
+  /* Header and menu */
+  const hdr = document.getElementById("hdr");
+  addEventListener("scroll", () => hdr.classList.toggle("solid", scrollY > 40), {passive:true});
+  const burger = document.getElementById("burger"), nav = document.getElementById("nav");
+  burger.onclick = () => { const o = nav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); burger.setAttribute("aria-label", o ? "Close menu" : "Open menu"); };
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("open"); burger.setAttribute("aria-expanded", false); burger.setAttribute("aria-label", "Open menu"); }));
+
+  /* Reveal */
+  if (!reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target); e.target.classList.add("revealed"); requestAnimationFrame(() => e.target.classList.remove("pending")); }), {rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll("[data-reveal]").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pending"); io.observe(el); } else el.classList.add("revealed"); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>AEC Machinery</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Machinery at Allied Engineering Company, Ahmedabad. Mazak HMC and VMC machining centres and Collet &amp; Engelhardt horizontal boring machines, with full capacities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: dark photo hero with fleet stats, then a filterable grid of machine cards with drawn work envelopes, a to-scale table footprint chart, a part-fit checker and the full spec table. Single light theme matching the home page. */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --band:#f2f2f2; --card:#f5f5f5; --fg:#1d1d1d; --muted:#555b63; --faint:#d6d6d6; --line:#e3e3e3;
+  --accent:#d7141c; --accent-soft:#fde8e9; --dark:#0d0d0d; --ok:#14804a;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --display:"Montserrat","Inter",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --wrap:1280px; --r:14px; --ease:cubic-bezier(.22,.7,.12,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+[hidden]{display:none!important}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.title{font-size:clamp(32px,4vw,54px);font-weight:700;text-transform:uppercase;line-height:1.08;letter-spacing:-.015em}
+.lead{font-size:clamp(16px,1.3vw,19px);color:var(--muted);line-height:1.6}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 32px;border-radius:999px;font:600 15px/1 var(--font);border:0;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
+.pill-accent{background:var(--accent);color:#fff}
+.pill-glass{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
+.pill-dark{background:var(--dark);color:#fff}
+
+/* Header */
+.hdr{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .3s,box-shadow .3s}
+.hdr.solid{background:#fff;box-shadow:0 1px 0 #e5e5e5}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:80px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font:800 italic 30px/1 var(--display);color:var(--accent);letter-spacing:.02em}
+.logo b::after{content:"";display:block;height:3px;width:70%;background:var(--accent);margin-top:3px;border-radius:2px}
+.logo small{font:600 10.5px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.nav{display:flex;gap:36px;align-items:center}
+.nav a{font-size:16px;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
+.nav a[aria-current="page"]{font-weight:600}
+.burger{display:none;position:relative;width:48px;height:48px;padding:0;border:1px solid #d6d6d6;border-radius:50%;background:#fff;color:#1d1d1d;cursor:pointer;flex:none;transition:background .25s,border-color .25s}
+.burger span{position:absolute;left:50%;top:50%;width:20px;height:2px;margin-left:-10px;border-radius:2px;background:#1d1d1d;transition:transform .35s cubic-bezier(.22,.7,.12,1),opacity .2s}
+.burger span:nth-child(1){transform:translateY(-7px)}
+.burger span:nth-child(3){transform:translateY(7px)}
+.burger[aria-expanded="true"]{background:#1d1d1d;border-color:#1d1d1d}
+.burger[aria-expanded="true"] span{background:#fff}
+.burger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg)}
+.progress{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:#111;color:#fff;padding-top:calc(80px + env(safe-area-inset-top,0px))}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kb 14s ease-out both}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.3) 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(70px,9vw,120px) clamp(48px,6vw,80px)}
+.crumb{font:500 13px/1 var(--font);color:rgba(255,255,255,.7);margin-bottom:26px;animation:up .9s .1s var(--ease) both}
+.crumb a:hover{color:#fff}
+.hero h1{font-size:clamp(44px,6vw,88px);font-weight:700;line-height:1.02;letter-spacing:-.025em;max-width:13ch}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln span{display:inline-block;animation:lineUp 1.1s var(--ease) both}
+.hero h1 .ln:nth-child(2) span{animation-delay:.12s}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:560px;margin-top:24px;color:rgba(255,255,255,.85);font-size:clamp(16px,1.3vw,19px);animation:up 1s .35s var(--ease) both}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(48px,6vw,80px);border-top:1px solid rgba(255,255,255,.2);animation:up 1s .5s var(--ease) both}
+.stat{padding:26px 24px 0 0}
+.stat+.stat{padding-left:24px;border-left:1px solid rgba(255,255,255,.2)}
+.stat b{display:block;font:700 clamp(34px,4vw,58px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat b small{font-size:.42em;font-weight:600;margin-left:4px;color:rgba(255,255,255,.7)}
+.stat>span{display:block;margin-top:10px;font-size:14px;color:rgba(255,255,255,.75)}
+
+/* Sections */
+.sec{padding-block:clamp(72px,8vw,120px)}
+.band{background:var(--band)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 72px;align-items:end;margin-bottom:44px}
+.head .title{margin-top:16px}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:600 14px/1 var(--font);color:var(--fg);cursor:pointer;transition:all .3s var(--ease)}
+.chip i{font-style:normal;font-size:12px;min-width:24px;padding:4px 7px;border-radius:999px;background:var(--band);color:var(--muted);text-align:center}
+.chip:hover{border-color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:#fff}
+.chip[aria-pressed="true"] i{background:var(--accent);color:#fff}
+
+/* Machine cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,370px),1fr));gap:20px}
+.m{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;display:flex;flex-direction:column;gap:18px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
+.m:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.1);border-color:#d0d0d0}
+.m.pop{animation:pop .6s var(--ease) both}
+.m.fit{border-color:var(--ok);box-shadow:0 0 0 3px rgba(20,128,74,.15)}
+.m.nofit{opacity:.38}
+.m-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.tag{display:inline-flex;align-items:center;gap:8px;font:700 11px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:6px}
+.units{font:600 12px/1 var(--font);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 10px;white-space:nowrap}
+.m h3{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-top:12px}
+.m .make{font-size:14px;color:var(--muted);margin-top:4px}
+.env{position:relative;height:170px;border-radius:10px;background:var(--card);background-image:radial-gradient(rgba(0,0,0,.08) 1px,transparent 1.2px);background-size:16px 16px;display:grid;place-items:center;overflow:hidden}
+.env svg{width:100%;height:100%;overflow:visible}
+.env .edge{fill:none;stroke:var(--fg);stroke-width:1.4;stroke-linejoin:round}
+.env .f1{fill:rgba(215,20,28,.18)}.env .f2{fill:rgba(215,20,28,.10)}.env .f3{fill:rgba(215,20,28,.28)}
+.env .face{opacity:0;transition:opacity .8s .6s ease}
+.env .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.2s var(--ease)}
+.env.on .face{opacity:1}
+.env.on .draw{stroke-dashoffset:0}
+.env text{font:600 11px var(--font);fill:var(--muted)}
+.env .ax{font-weight:700;fill:var(--accent)}
+.env-note{position:absolute;left:10px;top:8px;font:600 10px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:#9aa0a6}
+.m.conv .env{background:#1d1d1d;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+.m.conv .env-note{color:rgba(255,255,255,.45)}
+.m.conv .code{font:800 clamp(56px,6vw,76px)/1 var(--display);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px #fff;transition:color .6s,-webkit-text-stroke-color .6s}
+.m.conv:hover .code{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
+.m .desc{font-size:15px;color:var(--muted);line-height:1.55}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:22px minmax(0,1fr) 78px;align-items:center;gap:10px;font-size:13px}
+.bar b{font:700 13px var(--display);color:var(--fg)}
+.bar span{height:6px;border-radius:6px;background:var(--band);overflow:hidden}
+.bar span i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1d1d1d,var(--accent));border-radius:6px;transition:width 1.2s var(--ease)}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.specs div small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a9097;margin-bottom:3px}
+.specs div{font-size:14.5px;font-weight:600;min-width:0}
+
+/* Footprint */
+.fp{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:start}
+.fp-chart{background:#fff;border-radius:var(--r);padding:20px;border:1px solid var(--line);overflow-x:auto}
+.fp-chart svg{width:100%;min-width:520px;height:auto;display:block}
+.fp-chart .gl{stroke:#ececec;stroke-width:6}
+.fp-chart .gt{font:600 64px var(--font);fill:#9aa0a6}
+.fp-chart rect.t{fill:rgba(29,29,29,.03);stroke:#1d1d1d;stroke-width:10;transition:fill .3s,stroke .3s,opacity .3s;cursor:pointer}
+.fp-chart rect.t.hl{fill:rgba(215,20,28,.16);stroke:var(--accent);stroke-width:16}
+.fp-chart.dim rect.t:not(.hl){opacity:.25}
+.fp-chart rect.t.drawn{animation:grow 1.2s var(--ease) both}
+.legend{display:grid;gap:8px}
+.lg{display:grid;grid-template-columns:16px minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:14.5px;transition:all .25s var(--ease)}
+.lg i{width:14px;height:14px;border:2px solid var(--fg);border-radius:3px}
+.lg b{font-weight:600}
+.lg em{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13.5px}
+.lg:hover,.lg.hl{border-color:var(--accent);transform:translateX(4px)}
+.lg.hl i{border-color:var(--accent);background:rgba(215,20,28,.2)}
+
+/* Fit checker */
+.fit-box{background:var(--dark);color:#fff;border-radius:20px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;position:relative;overflow:hidden}
+.fit-box::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:60px solid rgba(215,20,28,.12);pointer-events:none}
+.fit-box h2{font-size:clamp(28px,3.2vw,44px);font-weight:700;line-height:1.1;margin:14px 0 14px}
+.fit-box p{color:rgba(255,255,255,.75)}
+.fit-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:12px;align-items:end;position:relative;z-index:1}
+.fit-form label{display:grid;gap:8px;font-size:13px;color:rgba(255,255,255,.7)}
+.fit-form input{width:100%;font:600 18px/1 var(--font);color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:15px 14px;font-variant-numeric:tabular-nums}
+.fit-form input:focus{outline:none;border-color:#fff}
+.fit-out{grid-column:1/-1;font-size:15px;min-height:1.5em;color:#fff}
+.fit-out b{color:#5fe39a}
+.fit-out a{text-decoration:underline;text-underline-offset:3px}
+.fit-note{grid-column:1/-1;font-size:12.5px;color:rgba(255,255,255,.5)}
+
+/* Table */
+.tbl{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line);background:#fff}
+table{width:100%;border-collapse:collapse;min-width:820px;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{position:sticky;top:0;background:#1d1d1d;color:#fff;font:600 12px/1 var(--font);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;user-select:none}
+th[data-num],td.n{text-align:right}
+th:hover{background:#333}
+th span{opacity:.5;margin-left:6px}
+th.asc span,th.desc span{opacity:1;color:#ff6b70}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:#fafafa}
+td.type{font-weight:700;color:var(--accent)}
+td.model{font-weight:600}
+
+/* CTA */
+.cta{position:relative;overflow:hidden;color:#fff;background:#111}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.35))}
+.cta .wrap{position:relative;z-index:2;padding-block:clamp(80px,9vw,130px)}
+.cta h2{font-size:clamp(36px,4.6vw,66px);font-weight:700;line-height:1.05;letter-spacing:-.02em;max-width:16ch;margin:16px 0 18px}
+.cta p{max-width:520px;color:rgba(255,255,255,.85);margin-bottom:32px}
+.cta .row{display:flex;flex-wrap:wrap;gap:12px}
+
+footer{background:var(--band);padding-block:44px 28px;font-size:15px;color:var(--muted)}
+.ftop{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:28px;border-bottom:1px solid #dcdcdc}
+.ftop nav{display:flex;flex-wrap:wrap;gap:26px}
+.ftop nav a:hover{color:var(--fg)}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:14px}
+
+/* WhatsApp */
+.wa{position:fixed;z-index:70;right:calc(24px + env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;animation:waIn .8s 1s var(--ease) both}
+.wa-btn{position:relative;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.45);transition:transform .35s var(--ease)}
+.wa-btn::before,.wa-btn::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:waRing 2.4s ease-out infinite}
+.wa-btn::after{animation-delay:1.2s}
+.wa-btn svg{width:32px;height:32px;fill:#fff}
+.wa:hover .wa-btn{transform:scale(1.08) rotate(-8deg)}
+.wa-tip{background:#fff;color:var(--fg);font:600 14px/1 var(--font);padding:12px 16px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.14);opacity:0;transform:translateX(10px);transition:opacity .3s,transform .35s var(--ease);white-space:nowrap}
+.wa:hover .wa-tip{opacity:1;transform:none}
+
+/* Reveal */
+.pending{opacity:0;transform:translateY(36px)}
+.revealed{transition:opacity 1s var(--ease),transform 1s var(--ease)}
+
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1.02)}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes lineUp{from{transform:translateY(110%)}to{transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+@keyframes waIn{from{opacity:0;transform:translateY(30px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes waRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}
+}
+
+@media (max-width:980px){
+  .head,.fp,.fit-box{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(n+3){margin-top:24px;border-top:1px solid rgba(255,255,255,.2)}
+}
+@media (max-width:860px){
+  .nav{position:absolute;top:80px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;padding:8px max(24px,env(safe-area-inset-right,0px)) 20px max(24px,env(safe-area-inset-left,0px));box-shadow:0 20px 30px rgba(0,0,0,.08);display:none}
+  .nav.open{display:flex}
+  .nav a{padding:16px 0;border-bottom:1px solid #eee}
+  .nav a::after{display:none}
+  .burger{display:grid;place-items:center}
+  .fit-form{grid-template-columns:1fr 1fr 1fr}
+  .fit-form .pill{grid-column:1/-1}
+}
+@media (max-width:520px){
+  .fit-form{grid-template-columns:1fr}
+  .wa-btn{width:56px;height:56px}.wa-tip{display:none}
+  .logo small{font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Allied Engineering Company home"><b>AEC</b><small>Allied Engineering Company</small></a>
+    <i class="progress" id="progress"></i>
+    <nav class="nav" id="nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="machinery.html" aria-current="page">Machinery</a>
+      <a href="index.html#quality">Quality</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-bg"><img src="images/hd/plant-1.jpg" alt=""></div>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / Machinery</div>
+    <span class="eyebrow" style="color:#ff5a60">Plant &amp; Machinery 2026</span>
+    <h1 style="margin-top:18px"><span class="ln"><span>Built for</span></span><span class="ln"><span><em>big</em> work.</span></span></h1>
+    <p>Mazak horizontal and vertical machining centres, Collet &amp; Engelhardt horizontal boring machines, plano millers, a Webo radial drill and a vertical turret lathe. Travels up to 4 metres, ready for heavy castings, forgings and fabricated structures.</p>
+    <div class="stats">
+      <div class="stat"><b><span data-count="20">20</span>+</b><span>Machines across two plants</span></div>
+      <div class="stat"><b><span data-count="4000">4000</span><small>mm</small></b><span>Longest X travel</span></div>
+      <div class="stat"><b><span data-count="1750">1750</span><small>mm</small></b><span>Deepest Z travel</span></div>
+      <div class="stat"><b>3000<small>× 1250</small></b><span>Largest VMC table (mm)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fleet">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div><span class="eyebrow">Our fleet</span><h2 class="title">Every machine, every capacity</h2></div>
+      <p class="lead">Each CNC and boring machine card shows its working envelope drawn to real proportions, with X, Y and Z travel compared against our largest machine. Conventional heavy machines are listed with capacities on request.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter machines by type" data-reveal>
+      <button class="chip" data-f="all" aria-pressed="true">All machines <i>20</i></button>
+      <button class="chip" data-f="VMC" aria-pressed="false">Vertical machining <i>8</i></button>
+      <button class="chip" data-f="HBM" aria-pressed="false">Horizontal boring <i>6</i></button>
+      <button class="chip" data-f="HMC" aria-pressed="false">Horizontal machining <i>2</i></button>
+      <button class="chip" data-f="CONV" aria-pressed="false">Conventional heavy <i>4</i></button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="sec band" id="footprint">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div><span class="eyebrow">To scale</span><h2 class="title">Table sizes side by side</h2></div>
+      <p class="lead">Every table in our plant drawn on the same millimetre grid, from the 500 × 500 HMC pallet to the 2700 × 1800 boring table. Hover a size to find it.</p>
+    </div>
+    <div class="fp" data-reveal>
+      <div class="fp-chart" id="fpChart"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fit">
+  <div class="wrap">
+    <div class="fit-box" data-reveal>
+      <div>
+        <span class="eyebrow" style="color:#ff5a60">Quick check</span>
+        <h2>Will your part fit?</h2>
+        <p>Enter the rough size of your part in millimetres. We will show which of our machines have the travel to reach it.</p>
+      </div>
+      <form class="fit-form" id="fitForm" novalidate>
+        <label for="fl">Length (mm)<input id="fl" type="number" min="0" inputmode="numeric" value="1800"></label>
+        <label for="fw">Width (mm)<input id="fw" type="number" min="0" inputmode="numeric" value="1200"></label>
+        <label for="fh">Height (mm)<input id="fh" type="number" min="0" inputmode="numeric" value="900"></label>
+        <button class="pill pill-accent" type="submit">Check</button>
+        <p class="fit-out" id="fitOut" role="status"></p>
+        <p class="fit-note">This compares your part with machine travels only. Fixturing, weight and tool reach matter too, so our team will confirm before quoting.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="specs">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div><span class="eyebrow">For engineers</span><h2 class="title">Full specification list</h2></div>
+      <p class="lead">All sizes in millimetres. Click any column heading to sort.</p>
+    </div>
+    <div class="tbl" data-reveal>
+      <table id="tbl">
+        <thead><tr>
+          <th data-k="type">Type <span>↕</span></th>
+          <th data-k="model">Model <span>↕</span></th>
+          <th data-k="make">Make <span>↕</span></th>
+          <th data-k="ctrl">Control <span>↕</span></th>
+          <th data-k="tarea" data-num>Table size <span>↕</span></th>
+          <th data-k="x" data-num>X <span>↕</span></th>
+          <th data-k="y" data-num>Y <span>↕</span></th>
+          <th data-k="z" data-num>Z <span>↕</span></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <img src="images/hd/cta.jpg" alt="Indian worker welding beside a large propeller casting in a heavy workshop" style="object-position:60% 28%" loading="lazy">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow" style="color:#ff5a60">Next step</span>
+    <h2>Send us your drawing.</h2>
+    <p>Tell us the part, material and quantity. We will pick the right machine and come back with a plan and a quote.</p>
+    <div class="row">
+      <a class="pill pill-accent" href="contact.html">Request a Quote</a>
+      <a class="pill pill-glass" href="index.html#capabilities">See Capabilities</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <a class="logo" href="index.html"><b>AEC</b><small>Allied Engineering Company</small></a>
+      <nav><a href="index.html#about">About</a><a href="index.html#capabilities">Capabilities</a><a href="machinery.html">Machinery</a><a href="index.html#quality">Quality</a><a href="index.html#clients">Clients</a><a href="contact.html">Contact</a></nav>
+    </div>
+    <div class="fbot"><span>© 2026 Allied Engineering Company. All rights reserved.</span><span>Saijpur Bogha, Ahmedabad, Gujarat</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/919979855347?text=Hello%20AEC%2C%20I%20would%20like%20to%20know%20about%20machine%20availability%20for%20my%20part." target="_blank" rel="noopener" aria-label="Chat with AEC on WhatsApp">
+  <span class="wa-tip">Chat on WhatsApp</span>
+  <span class="wa-btn"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.01 3C8.83 3 3 8.81 3 15.97c0 2.29.6 4.52 1.75 6.49L3 29l6.73-1.76a13.03 13.03 0 0 0 6.28 1.6h.01C23.18 28.84 29 23.03 29 15.87 29 12.4 27.65 9.15 25.2 6.7A12.92 12.92 0 0 0 16.01 3Zm0 23.66h-.01a10.8 10.8 0 0 1-5.5-1.5l-.4-.24-4 1.04 1.07-3.89-.26-.4a10.7 10.7 0 0 1-1.65-5.7c0-5.95 4.85-10.79 10.81-10.79 2.89 0 5.6 1.12 7.64 3.16a10.7 10.7 0 0 1 3.16 7.63c0 5.95-4.85 10.69-10.86 10.69Zm5.93-8.08c-.32-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.32-.84 1.06-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.5 5.56 4.91.78.34 1.38.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.62-.38Z"/></svg></span>
+</a>
+
+<script>
+(function(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 2026 machinery list. Sizes in mm. */
+  const LIST = [
+    {type:"HMC", model:"Mazatech H-500/50", make:"Mazak", ctrl:"Mazatrol M32-A", t:[500,500], x:710, y:650, z:650},
+    {type:"HMC", model:"Mazatech H-500/50", make:"Mazak", ctrl:"Mazatrol M32", t:[500,500], x:710, y:650, z:650},
+    {type:"VMC", model:"VQC 15/40", make:"Mazak", ctrl:"Mazatrol Cam M2", t:[900,410], x:560, y:410, z:381},
+    {type:"VMC", model:"VQC 15/40", make:"Mazak", ctrl:"Mazatrol M32", t:[900,410], x:560, y:410, z:381},
+    {type:"VMC", model:"VQC 15/40", make:"Mazak", ctrl:"Mazatrol M32", t:[900,410], x:560, y:410, z:381},
+    {type:"VMC", model:"AJV 25/405", make:"Mazak", ctrl:"LNC", t:[1240,550], x:1000, y:508, z:460},
+    {type:"VMC", model:"AJV 32/605", make:"Mazak", ctrl:"Mazatrol M32", t:[1500,700], x:700, y:750, z:460},
+    {type:"VMC", model:"MCV 2100", make:"Mazak", ctrl:"Fanuc Series 0-M", t:[2300,900], x:2100, y:850, z:950},
+    {type:"VMC", model:"AJV 60/120", make:"Mazak", ctrl:"Mazatrol M32", t:[3000,1250], x:3200, y:1420, z:600},
+    {type:"VMC", model:"AJV 60/120", make:"Mazak", ctrl:"Mazatrol M32-A", t:[3000,1250], x:3200, y:1420, z:600},
+    {type:"HBM", model:"HBM 1400 × 900", make:"Collet & Engelhardt", ctrl:"Conventional", t:[1400,900], x:1400, y:1200, z:1000},
+    {type:"HBM", model:"HBM 1400 × 900", make:"Collet & Engelhardt", ctrl:"Conventional", t:[1400,900], x:1400, y:1400, z:1300},
+    {type:"HBM", model:"HBM 1400 × 1600", make:"Collet & Engelhardt", ctrl:"Conventional", t:[1400,1600], x:1500, y:1200, z:1000},
+    {type:"HBM", model:"HBM 1400 × 1600", make:"Collet & Engelhardt", ctrl:"Conventional", t:[1400,1600], x:1800, y:1600, z:1450},
+    {type:"HBM", model:"HBM 1600 × 2000", make:"Collet & Engelhardt", ctrl:"Conventional", t:[1600,2000], x:2800, y:1900, z:1750},
+    {type:"HBM", model:"HBM 2700 × 1800", make:"Collet & Engelhardt", ctrl:"Conventional", t:[2700,1800], x:4000, y:2500, z:800}
+  ];
+  const NAMES = {HMC:"Horizontal Machining Centre", VMC:"Vertical Machining Centre", HBM:"Horizontal Boring Machine"};
+  /* Conventional heavy machines from the plant list. Capacities on request. */
+  const CONV = [
+    {code:"PM-1", name:"Plano Miller", sub:"Single column", make:"", desc:"Long beds, slides and base plates milled flat and square in one setup."},
+    {code:"PM-2", name:"Plano Miller", sub:"Double column", make:"", desc:"A rigid double column for wide, heavy workpieces that need accurate flat surfaces."},
+    {code:"RDM", name:"Radial Drill Machine", sub:"Webo", make:"Webo", desc:"Drilling, tapping and boring holes across large components without moving the job."},
+    {code:"VTL", name:"Vertical Turret Lathe", sub:"Heavy turning", make:"", desc:"Turning large diameter rings, flanges, discs and housings."}
+  ];
+  const fmt = n => n.toLocaleString("en-IN");
+
+  /* Group identical machines into one card */
+  const groups = [];
+  LIST.forEach(m => {
+    const key = [m.type, m.model, m.t.join("x"), m.x, m.y, m.z].join("|");
+    const g = groups.find(g => g.key === key);
+    if (g) { g.n++; if (!g.ctrls.includes(m.ctrl)) g.ctrls.push(m.ctrl); }
+    else groups.push({key, ...m, n:1, ctrls:[m.ctrl]});
+  });
+  const MAX = {x:Math.max(...LIST.map(m => m.x)), y:Math.max(...LIST.map(m => m.y)), z:Math.max(...LIST.map(m => m.z))};
+
+  /* Isometric work envelope, true proportions */
+  function envelope(m){
+    const s = 96 / Math.max(m.x, m.y, m.z);
+    const X = m.x * s, Y = m.y * s, Z = m.z * s, c = Math.cos(Math.PI/6), sn = Math.sin(Math.PI/6);
+    const P = (x,y,z) => [ (x - y) * c, (x + y) * sn - z ];
+    const pts = {o:P(0,0,0), x:P(X,0,0), y:P(0,Y,0), xy:P(X,Y,0), z:P(0,0,Z), xz:P(X,0,Z), yz:P(0,Y,Z), xyz:P(X,Y,Z)};
+    { const v = Object.values(pts), w = Math.max(...v.map(p => p[0])) - Math.min(...v.map(p => p[0])), h = Math.max(...v.map(p => p[1])) - Math.min(...v.map(p => p[1])), k = Math.min(1.6, 220 / w, 104 / h); v.forEach(p => { p[0] *= k; p[1] *= k; }); }
+    const all = Object.values(pts), minX = Math.min(...all.map(p => p[0])), maxX = Math.max(...all.map(p => p[0])), minY = Math.min(...all.map(p => p[1])), maxY = Math.max(...all.map(p => p[1]));
+    const ox = 170 - (minX + maxX) / 2, oy = 85 - (minY + maxY) / 2;
+    const q = k => (pts[k][0] + ox).toFixed(1) + "," + (pts[k][1] + oy).toFixed(1);
+    const poly = (ks, cls) => '<polygon class="face ' + cls + '" points="' + ks.map(q).join(" ") + '"/>';
+    const outline = ["y","xy","x","xz","z","yz","y"].map(q).join(" ") + " ";
+    const inner = [q("xyz"), q("xz"), q("xyz"), q("yz"), q("xyz"), q("xy")];
+    const len = 1400;
+    const mid = (a,b) => [((pts[a][0]+pts[b][0])/2 + ox).toFixed(1), ((pts[a][1]+pts[b][1])/2 + oy).toFixed(1)];
+    const mx = mid("y","xy"), my = mid("x","xy"), mz = mid("x","xz");
+    return '<svg viewBox="0 0 340 170" aria-hidden="true">' +
+      poly(["z","xz","xyz","yz"], "f3") + poly(["x","xy","xyz","xz"], "f2") + poly(["y","xy","xyz","yz"], "f1") +
+      '<polyline class="edge draw" style="--len:' + len + '" points="' + outline + '"/>' +
+      '<polyline class="edge draw" style="--len:' + len + '" points="' + inner.join(" ") + '"/>' +
+      '<text x="' + (+mx[0] - 30) + '" y="' + (+mx[1] + 16) + '"><tspan class="ax">X</tspan> ' + fmt(m.x) + '</text>' +
+      '<text x="' + (+my[0] + 8) + '" y="' + (+my[1] + 16) + '"><tspan class="ax">Y</tspan> ' + fmt(m.y) + '</text>' +
+      '<text x="' + (+mz[0] + 10) + '" y="' + (+mz[1]) + '"><tspan class="ax">Z</tspan> ' + fmt(m.z) + '</text>' +
+      '</svg>';
+  }
+
+  const grid = document.getElementById("grid");
+  grid.innerHTML = groups.map((m,i) =>
+    '<article class="m" data-type="' + m.type + '" data-i="' + i + '">' +
+      '<div class="m-top"><div><span class="tag">' + m.type + '</span><h3>' + m.model + '</h3><p class="make">' + NAMES[m.type] + ' · ' + m.make + '</p></div>' +
+      (m.n > 1 ? '<span class="units">' + m.n + ' units</span>' : '<span class="units">1 unit</span>') + '</div>' +
+      '<div class="env"><span class="env-note">Working envelope</span>' + envelope(m) + '</div>' +
+      '<div class="bars">' + ["x","y","z"].map(a => '<div class="bar"><b>' + a.toUpperCase() + '</b><span><i data-w="' + (m[a] / MAX[a] * 100).toFixed(1) + '"></i></span><em>' + fmt(m[a]) + ' mm</em></div>').join("") + '</div>' +
+      '<div class="specs"><div><small>Table size</small>' + fmt(m.t[0]) + ' × ' + fmt(m.t[1]) + ' mm</div><div><small>Control</small>' + m.ctrls.join(", ") + '</div></div>' +
+    '</article>').join("") +
+    CONV.map(c =>
+    '<article class="m conv" data-type="CONV" data-conv="1">' +
+      '<div class="m-top"><div><span class="tag">Conventional</span><h3>' + c.name + '</h3><p class="make">' + c.sub + '</p></div><span class="units">In plant</span></div>' +
+      '<div class="env"><span class="env-note">Machine code</span><span class="code">' + c.code + '</span></div>' +
+      '<p class="desc">' + c.desc + '</p>' +
+      '<div class="specs"><div><small>Type</small>Conventional</div><div><small>Capacity</small>On request</div></div>' +
+    '</article>').join("");
+  const cards = [...grid.children];
+
+  function animateCard(c){
+    const e = c.querySelector(".env"); if (e) e.classList.add("on");
+    c.querySelectorAll(".bar i").forEach(i => i.style.width = i.dataset.w + "%");
+  }
+
+  /* Filters */
+  const chips = [...document.querySelectorAll(".chip")];
+  chips.forEach(ch => ch.onclick = () => {
+    chips.forEach(c => c.setAttribute("aria-pressed", c === ch));
+    const f = ch.dataset.f; let k = 0;
+    cards.forEach(c => {
+      const show = f === "all" || c.dataset.type === f;
+      c.hidden = !show;
+      if (show) { c.classList.remove("pop"); void c.offsetWidth; c.style.animationDelay = (k++ * 60) + "ms"; c.classList.add("pop"); animateCard(c); }
+    });
+  });
+
+  /* Footprint chart, to scale in mm */
+  const sizes = [];
+  LIST.forEach(m => { const k = m.t.join("x"); let s = sizes.find(s => s.k === k); if (!s) { s = {k, w:m.t[0], h:m.t[1], who:new Set()}; sizes.push(s); } s.who.add(m.type + " " + m.model.replace(/^HBM /, "")); });
+  sizes.sort((a,b) => b.w * b.h - a.w * a.h);
+  const W = 3200, H = 2200, pad = 210;
+  let svg = '<svg viewBox="0 0 ' + (W + pad) + ' ' + (H + pad) + '" role="img" aria-label="Table sizes drawn to scale">';
+  for (let v = 0; v <= 3000; v += 500) svg += '<line class="gl" x1="' + (pad + v) + '" y1="0" x2="' + (pad + v) + '" y2="' + H + '"/><text class="gt" x="' + (pad + v) + '" y="' + (H + 90) + '" text-anchor="middle">' + v + '</text>';
+  for (let v = 0; v <= 2000; v += 500) svg += '<line class="gl" x1="' + pad + '" y1="' + (H - v) + '" x2="' + (W + pad) + '" y2="' + (H - v) + '"/><text class="gt" x="' + (pad - 20) + '" y="' + (H - v + 22) + '" text-anchor="end">' + v + '</text>';
+  sizes.forEach((s,i) => svg += '<rect class="t" data-i="' + i + '" x="' + pad + '" y="' + (H - s.h) + '" width="' + s.w + '" height="' + s.h + '" rx="14" style="transform-origin:' + pad + 'px ' + H + 'px;animation-delay:' + (i * 90) + 'ms"/>');
+  svg += '</svg>';
+  const chart = document.getElementById("fpChart"); chart.innerHTML = svg;
+  const rects = [...chart.querySelectorAll("rect.t")];
+  const legend = document.getElementById("legend");
+  legend.innerHTML = sizes.map((s,i) => '<div class="lg" data-i="' + i + '" tabindex="0"><i></i><b>' + fmt(s.w) + ' × ' + fmt(s.h) + '</b><em>' + [...s.who].join(", ") + '</em></div>').join("");
+  const lgs = [...legend.children];
+  function hl(i){ chart.classList.toggle("dim", i !== null); rects.forEach(r => r.classList.toggle("hl", +r.dataset.i === i)); lgs.forEach(l => l.classList.toggle("hl", +l.dataset.i === i)); }
+  [...rects, ...lgs].forEach(el => { el.addEventListener("mouseenter", () => hl(+el.dataset.i)); el.addEventListener("mouseleave", () => hl(null)); el.addEventListener("focus", () => hl(+el.dataset.i)); el.addEventListener("blur", () => hl(null)); });
+
+  /* Fit checker */
+  const form = document.getElementById("fitForm"), out = document.getElementById("fitOut");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const L = +document.getElementById("fl").value, Wd = +document.getElementById("fw").value, Ht = +document.getElementById("fh").value;
+    if (!(L > 0 && Wd > 0 && Ht > 0)) { out.textContent = "Enter length, width and height in millimetres."; return; }
+    const ok = m => ((m.x >= L && m.y >= Wd) || (m.x >= Wd && m.y >= L)) && m.z >= Ht;
+    let units = 0;
+    chips[0].click();
+    cards.forEach(c => { if (c.dataset.conv) { c.classList.add("nofit"); return; } const g = groups[+c.dataset.i], f = ok(g); c.classList.toggle("fit", f); c.classList.toggle("nofit", !f); if (f) units += g.n; });
+    if (units) { out.innerHTML = "<b>" + units + " of our machines</b> have the travel for a " + fmt(L) + " × " + fmt(Wd) + " × " + fmt(Ht) + " mm part. They are highlighted in the fleet above. <a href=\"#fleet\">See them</a>"; }
+    else { out.innerHTML = "None of our machines has that much travel in one setup. Send us the drawing anyway, as larger parts can often be machined in stages. <a href=\"contact.html\">Contact us</a>"; }
+  });
+  form.addEventListener("reset", () => cards.forEach(c => c.classList.remove("fit","nofit")));
+
+  /* Sortable spec table */
+  const rows = LIST.map(m => ({...m, tarea:m.t[0] * m.t[1]}));
+  const tbody = document.getElementById("tbody");
+  const convRows = CONV.map(c => '<tr><td class="type">Conv.</td><td class="model">' + c.name + ' (' + c.sub + ')</td><td>' + (c.make || "Not listed") + '</td><td>Conventional</td><td class="n" colspan="4" style="text-align:center;color:#8a9097">Capacity on request</td></tr>').join("");
+  function render(list){ tbody.innerHTML = list.map(m => '<tr><td class="type">' + m.type + '</td><td class="model">' + m.model + '</td><td>' + m.make + '</td><td>' + m.ctrl + '</td><td class="n">' + fmt(m.t[0]) + ' × ' + fmt(m.t[1]) + '</td><td class="n">' + fmt(m.x) + '</td><td class="n">' + fmt(m.y) + '</td><td class="n">' + fmt(m.z) + '</td></tr>').join("") + convRows; }
+  render(rows);
+  const ths = [...document.querySelectorAll("th")];
+  ths.forEach(th => th.onclick = () => {
+    const k = th.dataset.k, dir = th.classList.contains("asc") ? -1 : 1;
+    ths.forEach(t => t.classList.remove("asc","desc")); th.classList.add(dir === 1 ? "asc" : "desc");
+    render([...rows].sort((a,b) => (typeof a[k] === "number" ? a[k] - b[k] : String(a[k]).localeCompare(String(b[k]))) * dir));
+  });
+
+  /* Header, menu, progress */
+  const hdr = document.getElementById("hdr"), prog = document.getElementById("progress");
+  function onScroll(){ hdr.classList.toggle("solid", scrollY > 40); const h = document.documentElement.scrollHeight - innerHeight; prog.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")"; }
+  addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  const burger = document.getElementById("burger"), nav = document.getElementById("nav");
+  burger.onclick = () => { const o = nav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); burger.setAttribute("aria-label", o ? "Close menu" : "Open menu"); };
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("open"); burger.setAttribute("aria-expanded", false); burger.setAttribute("aria-label", "Open menu"); }));
+
+  /* Counters */
+  function count(el){ const end = +el.dataset.count, t0 = performance.now(); (function f(now){ const p = Math.min((now - t0) / 1500, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); })(t0); }
+  if (!reduce) document.querySelectorAll("[data-count]").forEach(count);
+
+  /* Reveal and draw on scroll */
+  if (!reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; io.unobserve(el);
+      if (el.classList.contains("m")) { animateCard(el); return; }
+      if (el === chart) { rects.forEach(r => r.classList.add("drawn")); return; }
+      el.classList.add("revealed"); requestAnimationFrame(() => el.classList.remove("pending"));
+    }), {rootMargin:"0px 0px -10% 0px"});
+    document.querySelectorAll("[data-reveal]").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("pending"); io.observe(el); } });
+    cards.forEach((c,i) => { if (c.getBoundingClientRect().top > innerHeight) { c.classList.add("pending"); c.style.transitionDelay = (i % 3) * 80 + "ms"; io.observe(c); new IntersectionObserver((es,o) => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); c.classList.add("revealed"); requestAnimationFrame(() => c.classList.remove("pending")); } }), {rootMargin:"0px 0px -10% 0px"}).observe(c); } else animateCard(c); });
+    io.observe(chart);
+  } else { cards.forEach(animateCard); }
+})();
+</script>
+</body>
+</html>
