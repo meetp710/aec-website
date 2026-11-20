@@ -1,0 +1,31 @@
+AEC website photos, all from Unsplash (Unsplash License: free for commercial use, no attribution required).
+
+hero-3.jpg  https://unsplash.com/photos/white-and-brown-building-interior-z6DJJZ1-1Cg
+cap1-s2.jpg  https://unsplash.com/photos/silver-tube-pipe-in-grayscale-photography-uIOCu_ErVTc
+cap2-big.jpg  https://unsplash.com/photos/industrial-crane-lifting-molten-metal-ladle-io7dX_1EFCg
+cap3-big.jpg  https://unsplash.com/photos/man-in-blue-t-shirt-and-brown-shorts-wearing-black-helmet-sPl7FgBalxI
+cap3-s1.jpg  https://unsplash.com/photos/man-in-grey-t-shirt-and-black-shorts-sitting-on-chair-KAVGTm62cuw
+cap3-s2.jpg  https://unsplash.com/photos/person-drilling-metal-bar-5Wu96pC2qxE
+plant-1.jpg  https://unsplash.com/photos/cnc-machines-in-industrial-manufacturing-workshop-O6YIDLs4AZE
+plant-2.jpg  https://unsplash.com/photos/interior-of-large-industrial-factory-SLIFI67jv5k
+banner.jpg  https://unsplash.com/photos/a-large-building-with-a-lot-of-windows-h18Dj4zb7WU
+pillar-1.jpg  https://unsplash.com/photos/a-man-working-on-a-machine-in-a-factory-LeMks09eu4U
+pillar-3.jpg  https://unsplash.com/photos/gray-dial-caliper-0Hmh461Goog
+pillar-4.jpg  https://unsplash.com/photos/brown-and-gray-train-station-yNa7zPNioJM
+pillar-5.jpg  https://unsplash.com/photos/gray-metal-gear-lot-xRDuEeG1TVI
+quality.jpg  https://unsplash.com/photos/grayscale-photography-of-robot-machine-vzSWktaawVU
+dark.jpg  https://unsplash.com/photos/grey-metal-gear-6kfQvW5eync
+impact-2.jpg  https://unsplash.com/photos/graphical-user-interface-X0S02vLrZEs
+
+Replaced with heavy-part photos from Pexels (Pexels License: free for commercial use, no attribution required).
+hero-1.jpg  https://www.pexels.com/photo/2760241/
+hero-2.jpg  https://www.pexels.com/photo/2995864/
+hero-4.jpg  https://www.pexels.com/photo/28048720/
+hero-5.jpg  https://www.pexels.com/photo/5503874/
+cap1-big.jpg  https://www.pexels.com/photo/31741227/
+cap1-s1.jpg  https://www.pexels.com/photo/28929545/
+cap2-s1.jpg  https://www.pexels.com/photo/5845945/
+cap2-s2.jpg  https://www.pexels.com/photo/2965258/
+impact-1.jpg  https://www.pexels.com/photo/10143477/
+pillar-2.jpg  https://www.pexels.com/photo/37582039/
+cta.jpg  https://www.pexels.com/photo/33547498/ (Pexels License)
